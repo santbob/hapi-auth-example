@@ -3,7 +3,7 @@ hapi-auth-example
 
 An Example Session management application using bell and hapi-auth-cookie
 
-### **Hapi-Auth-Sample**
+### **Hapi-Auth-Example**
 
 If you are looking for an example how to use Facebook, Google login in your site which is built using HapiJS and its jewels. You are in the right place.
 
