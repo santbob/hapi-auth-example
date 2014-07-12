@@ -14,8 +14,8 @@ In this repo, we have implemented [Facebook](https://developers.facebook.com/ "F
 
 ```
 
-1. Register apps in [Facebook](https://developers.facebook.com/ "Facebook") and [Google](https://console.developers.google.com/project "Google")
-2. Enter the clientId and clientSecret at [Config.js](https://github.com/santbob/hapi-auth-example/blob/master/plugins/auth/config.js "Config.js")
+1. Register apps in facebook and Google
+2. Enter the clientId and clientSecret at ../plugins/auth/config.js
 3. npm install
 4. node index.js
 5. http://domainname:3000/myprofile
