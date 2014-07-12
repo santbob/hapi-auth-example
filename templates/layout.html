@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body class="pure-skin-mine">
+    {{#if isLoggedIn}} {{> nav}} {{else}} {{> header}} {{/if}}
+    <section class="maincontent">
+        {{{ content }}}
+    </section>
+    {{> footer}}
+    <script type="text/javascript" src="/js/lib/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/js/lib/handlebars.runtime.js"></script>
+</body>
+</html>

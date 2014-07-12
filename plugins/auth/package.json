@@ -1,0 +1,11 @@
+{
+  "name": "auth",
+  "version": "0.0.1",
+  "description": "Auth Hapi plugin",
+  "main": "auth.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Santhosh Nageshwar <santhoshbabun@gmail.com>",
+  "license": "BSD"
+}

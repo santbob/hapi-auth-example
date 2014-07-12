@@ -1,0 +1,30 @@
+{
+  "name": "hapi-auth-example",
+  "version": "0.0.1",
+  "description": "An Example Session management application using bell, hapi-auth-cookie, hapi and other dependent modules",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:santbob/hapi-auth-example.git"
+  },
+  "keywords": [
+    "hapi",
+    "bell",
+    "authentication",
+    "hapi-auth-cookie"
+  ],
+  "author": "Santhosh Nageshwar <santhoshbabun@gmail.com>",
+  "license": "BSD",
+  "dependencies": {
+    "hapi": "~6.0.2",
+    "bell": "~1.0.2",
+    "joi": "~4.6.1",
+    "lout": "~5.0.1",
+    "hoek": "~2.3.0",
+    "hapi-auth-cookie": "~1.2.0",
+    "confidence": "~0.12.1"
+  }
+}
