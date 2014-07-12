@@ -25,6 +25,7 @@
     "lout": "~5.0.1",
     "hoek": "~2.3.0",
     "hapi-auth-cookie": "~1.2.0",
-    "confidence": "~0.12.1"
+    "confidence": "~0.12.1",
+    "handlebars": "~2.0.0-alpha.4"
   }
 }
