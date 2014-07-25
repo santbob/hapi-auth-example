@@ -1,4 +1,5 @@
-var Hapi = require("hapi");
+'use strict';
+var Hapi = require('hapi');
 var lout = require('lout');
 
 var serverOptions = {
@@ -28,8 +29,8 @@ server.pack.register([{
 }], function(err) {
     if (err) throw err;
     server.route([{
-        path: "/myprofile",
-        method: "GET",
+        path: '/myprofile',
+        method: 'GET',
         config: {
             auth: 'session',
             handler: function(request, reply) {
@@ -37,10 +38,13 @@ server.pack.register([{
             }
         }
     }, {
-        path: "/",
-        method: "GET",
+        path: '/',
+        method: 'GET',
         handler: function(request, reply) {
-            reply.view("index", {});
+            reply.view('index', {
+                auth: JSON.stringify(request.auth),
+                session: JSON.stringify(request.session)
+            });
         }
     }, {
         method: 'GET',
@@ -55,9 +59,9 @@ server.pack.register([{
     }]);
     server.start(function(err) {
         if (err) {
-            console.log("error message " + err);
+            console.log('error message ' + err);
         }
-        console.log("Hapi server started @ " + server.info.uri);
+        console.log('Hapi server started @ ' + server.info.uri);
         console.log('server started on port: ', server.info.port);
     });
 });
