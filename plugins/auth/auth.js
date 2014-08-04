@@ -4,18 +4,18 @@ var Providers = require("./config").get('/provider');
 
 exports.register = function(plugin, options, next) {
 
-    //app cache to store user information once loggedin.
+    //app cache to store user information once logged in.
     var cache = plugin.cache({
         expiresIn: 3 * 24 * 60 * 60 * 1000
     });
     plugin.app.cache = cache;
 
-    //Bind the object to the plugin to be accesible in handlers
+    //Bind the object to the plugin to be accessible in handlers
     plugin.bind({
         cache: plugin.app.cache
     });
     
-    //Add Multiple stratergies here and we have used confidence to pick up the configuration.
+    //Add Multiple strategies here and we have used confidence to pick up the configuration.
     plugin.auth.strategy('facebook', 'bell', Providers.facebook);
 
     plugin.auth.strategy('google', 'bell', Providers.google);

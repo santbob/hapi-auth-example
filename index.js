@@ -1,6 +1,5 @@
 'use strict';
 var Hapi = require('hapi');
-var lout = require('lout');
 
 var serverOptions = {
     views: {
@@ -18,15 +17,11 @@ var serverOptions = {
 var server = new Hapi.Server(3000, 'localhost', serverOptions);
 
 
-server.pack.register([{
-    plugin: lout
-}, {
-    plugin: require('bell')
-}, {
-    plugin: require('hapi-auth-cookie')
-}, {
-    plugin: require('./plugins/auth')
-}], function(err) {
+server.pack.register([
+    { plugin: require('lout') },
+    { plugin: require('bell') },
+    { plugin: require('hapi-auth-cookie') },
+    { plugin: require('./plugins/auth')}], function(err) {
     if (err) throw err;
     server.route([{
         path: '/myprofile',
@@ -34,21 +29,33 @@ server.pack.register([{
         config: {
             auth: 'session',
             handler: function(request, reply) {
-                reply('<html><head><title>Login page</title></head><body><h3>Welcome ' + JSON.stringify(request.auth.credentials, null, 4) + '!</h3><br/><form method="get" action="/logout">' + '<input type="submit" value="Logout">' + '</form></body></html>');
+                reply('<html><head><title>Login page</title></head><body><h3>Welcome '
+                  + JSON.stringify(request.auth.credentials, null, 4)
+                  + '!</h3><br/><form method="get" action="/logout">'
+                  + '<input type="submit" value="Logout">'
+                  + '</form></body></html>');
             }
         }
     }, {
         path: '/',
         method: 'GET',
+        config: {  // try with redirectTo disabled makes isAuthenticated usefully available
+            auth: {
+                strategy: 'session',
+                mode: 'try'
+            },
+            plugins: { 'hapi-auth-cookie': { redirectTo: false } }
+        },
         handler: function(request, reply) {
             reply.view('index', {
                 auth: JSON.stringify(request.auth),
-                session: JSON.stringify(request.session)
+                session: JSON.stringify(request.session),
+                isLoggedIn: request.auth.isAuthenticated
             });
         }
     }, {
-        method: 'GET',
         path: '/{path*}',
+        method: 'GET',
         handler: {
             directory: {
                 path: './public',
