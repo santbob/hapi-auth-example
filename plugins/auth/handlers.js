@@ -8,7 +8,7 @@ exports.sessionManagement = function(request, reply) {
         account: account
     }, 0, function(err) {
         if (err) {
-            reply(err);
+            return reply(err);
         }
         request.auth.session.set({
             sid: sid
