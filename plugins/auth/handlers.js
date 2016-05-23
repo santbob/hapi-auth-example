@@ -2,7 +2,7 @@
 exports.sessionManagement = function(request, reply) {
     /*session management using hapi-cookie*/
     var account = request.auth.credentials;
-    var sid = account.profile.id;
+    var sid = '' + account.profile.id;
     //cache object bounded to the plugin is available here.
     this.cache.set(sid, {
         account: account
